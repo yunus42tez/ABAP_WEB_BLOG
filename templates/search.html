@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Arama Sonuçları</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <a href="/" class="about-btn">← Geri Dön</a>
+  </header>
+
+  <div class="post-container">
+    <h2>"{{ query }}" için sonuçlar</h2>
+
+    <ul>
+      {% for post in results %}
+        <li class="post-item">
+          <a href="{{ url_for('post', id=post.id) }}" class="post-title">{{ post.title }}</a>
+          <p>{{ post.content[:200]|safe }}...</p>
+
+        </li>
+      {% else %}
+        <li>Sonuç bulunamadı.</li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Lottie animasyon kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <form action="/search" method="get" class="search-form">
+      <input type="text" name="q" placeholder="🔍 Başlık ara...">
+      <button type="submit">Ara</button>
+    </form>
+
+    <a href="/about" class="about-btn">Hakkımda</a>
+  </div>
+</header>
+
+<div id="codingboy" style="width:350px; height:350px; position:fixed;
+    top: 70%;
+    left: 80%;
+    transform: translate(-50%, -50%);">
+</div>
+
+<div class="nav-container">
+
+  <div id="sap_logo" style="
+      position: fixed;
+      top: 35%;
+      left: 80%;
+      transform: translate(-50%, -50%);
+  ">
+    <img src="/assets/sap_logo.jpg"
+         alt="SAP Logo"
+         style="
+           width: 200px;
+           height: auto;
+           border-radius: 10px;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+           transition: transform 0.3s ease;
+         "
+         onmouseover="this.style.transform='scale(1.05)'"
+         onmouseout="this.style.transform='scale(1)'">
+  </div> <!-- /#sap_logo -->
+
+</div>
+
+<!-- Yazılar -->
+<main class="content">
+    <h1>SAP ABAP Konu Başlıkları 📑</h1>
+    <ul>
+      {% for post in posts %}
+      <li class="post-item">
+        <a href="{{ url_for('post', id=post.id) }}" class="post-title">{{ post.title }}</a>
+        <p>{{ post.content[:200]|safe }}...</p>
+        <br>
+        <small>Yunus TEZ</small>
+        <br>
+        <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
+      </li>
+      {% else %}
+      <p>Henüz yazı bulunmuyor.</p>
+      {% endfor %}
+    </ul>
+</main>
+
+<script>
+    // Lottie animasyonu yükle
+    lottie.loadAnimation({
+        container: document.getElementById('codingboy'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/assets/codingboy.json'  // JSON dosyanın yolu
+    });
+</script>
+
+</body>
+</html>

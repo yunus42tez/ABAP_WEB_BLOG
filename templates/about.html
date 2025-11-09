@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hakkımda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <!-- Lottie animasyon kütüphanesi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+</head>
+<body>
+<header>
+    <a href="/" class="about-btn">← Geri Dön</a>
+</header>
+
+<div id="plane"></div>
+<div id="plane1"></div>
+<div id="profile"></div>
+<about>
+    <div class="about">
+     <p>Merhaba, ben Yunus Tez.</p><p>Bu blog, benim kariyer yolculuğumun ve sürekli yeni şeyler öğrenme serüvenimin bir kaydı. 1999 doğumlu biri olarak, farklı disiplinlerin birbirini beslediğine inanarak yola çıktım.
+    2024 yılından beri ABAP geliştirici olarak çalışmaktayım.</p>
+<p></p><h4>Neden Bu Blog?</h4><p></p>
+<p>Bu platformu iki temel amaçla kurdum:</p><ol start="1"><li><p><b>Kendim İçin Bir Not Defteri:</b>
+  SAP ABAP, sürekli güncellenen ve derinleşen bir okyanus. Bu blog, öğrendiğim yeni teknikleri, karşılaştığım zorlukları,
+  bulduğum çözümleri ve "keşke bunu daha önce bilseydim" dediğim anları kaydettiğim kişisel bir öğrenme günlüğüdür.</p></li>
+  <li><p><b>Başkalarına Yardımcı Olmak:</b> Bilgi paylaştıkça çoğalır. Benim geçtiğim yollardan geçen, SAP ABAP kariyerine yeni başlayan
+    veya bu alanda kendini geliştirmek isteyen herkese bir kaynak sunmayı hedefliyorum. Eğer benim tecrübelerim bir başkasının sorununu daha hızlı çözmesine yardımcı olabilirse,
+    bu blog amacına ulaşmış demektir.</p></li></ol><p>Bu öğrenme serüvenimde bana katıldığınız için teşekkür ederim. Umarım buradaki içerikler, sizin kendi yolculuğunuza da ışık tutar.</p>
+        <p></p><h4>Akademik Temel: Yönetim ve Teknoloji</h4><p></p>
+<p>Eğitim hayatım, Manisa Celal Bayar Üniversitesi Kamu Yönetimi bölümünden mezun olarak başladı. Bu alanda edindiğim bilgi birikimi, bana organizasyonların nasıl çalıştığı, iş süreçlerinin nasıl yönetildiği ve verimliliğin nasıl sağlandığı konusunda güçlü bir analitik temel kazandırdı.</p>
+<p>Ancak teknolojiye ve yazılıma olan derin ilgim, beni bu alanda da kendimi geliştirmeye itti. Bu tutkumu, Smartpro'da aldığım ERP bootcamp'i ve Anadolu Üniversitesi açıköğretim Fakültesi'nde Bilgisayar Programcılığı bölümünü tamamlayarak teknik bir yetkinliğe dönüştürdüm.</p>
+        </div>
+</about>
+
+    <script>
+    // Lottie animasyonu yükle   https://app.lottiefiles.com/
+    lottie.loadAnimation({
+        container: document.getElementById('plane'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/assets/plane.json'  // JSON dosyanın yolu
+    });
+
+        // Lottie animasyonu yükle   https://app.lottiefiles.com/
+    lottie.loadAnimation({
+        container: document.getElementById('plane1'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/assets/plane1.json'  // JSON dosyanın yolu
+    });
+
+    // Lottie animasyonu yükle   https://app.lottiefiles.com/
+    lottie.loadAnimation({
+        container: document.getElementById('profile'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/assets/profile.json'  // JSON dosyanın yolu
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ post.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <a href="/" class="about-btn">← Geri Dön</a>
+  </header>
+
+<div class="post-container">
+  <h1>{{ post.title }}</h1>
+  <div>{{ post.content | safe }}</div>
+    <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
+</div>
+</body>
+</html>

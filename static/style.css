@@ -1,0 +1,332 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #2b3a67;
+    padding: 15px 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.about-btn {
+    background-color: #f5f7fa;
+    color: #2b3a67;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+    background-color: #2b3a67;
+    color: #f5f7fa;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(43,58,103,0.5);
+}
+
+about {
+    text-align: center;
+}
+
+.about {
+    padding: 50px 340px 0 340px;
+}
+
+.post-container {
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+/* Header içeriğini hizalamak için */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 900px;
+}
+
+/* Arama formu */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-form input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 220px;
+  font-size: 14px;
+}
+
+.search-form button {
+  background-color: #3b4cca;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: #5569ff;
+}
+
+main {
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+/* Genel animasyon stilleri */
+ #plane, #plane1 {
+  position: fixed;
+  z-index: 1;
+}
+
+#profile {
+  position: relative;
+  display: block;
+  margin: 0px auto; /* ortalar ve yazıdan boşluk bırakır */
+  width: 300px;
+  height: 300px;
+  z-index: 1;
+}
+
+
+/* ---------- Masaüstü (geniş ekranlar) ---------- */
+@media (min-width: 1200px) {
+
+  #plane {
+    width: 300px;
+    height: 300px;
+    right: 60px;
+    bottom: 280px;
+  }
+
+  #plane1 {
+    width: 300px;
+    height: 300px;
+    left: 60px;
+    bottom: 80px;
+  }
+}
+
+/* ---------- Orta ekran (tablet) ---------- */
+@media (max-width: 1199px) and (min-width: 768px) {
+
+  #plane {
+    width: 200px;
+    height: 200px;
+    right: 20px;
+    bottom: 100px;
+  }
+
+  #plane1 {
+    width: 200px;
+    height: 200px;
+    left: 20px;
+    bottom: 50px;
+  }
+}
+
+/* ---------- Küçük ekran (telefon) ---------- */
+@media (max-width: 767px) {
+
+  #plane,
+  #plane1 {
+    display: none; /* küçük ekranda gerekirse gizlenebilir */
+  }
+}
+
+/* --- Admin sayfası düzen --- */
+.form-container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  width: 90%;
+  max-width: 700px;
+  margin-bottom: 40px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+input[type="submit"], button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #0056b3;
+}
+
+/* Editor kutusu */
+.editor {
+    height: 400px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Quill toolbar’ı sabitle */
+.ql-toolbar {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Mesaj alanı (flash messages) */
+.flash {
+    background: #ffeeba;
+    color: #856404;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* --- Logout kutusu --- */
+.logout-container {
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+  background: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logout-link {
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.logout-link:hover {
+  color: #007BFF;
+}
+
+/* --- Silme kutusu özel renk --- */
+.delete-container {
+  border-top: 4px solid #dc3545;
+  border-bottom: 4px solid #dc3545;
+}
+
+.delete-btn {
+  background-color: #b92d3a;
+  color: #444;
+}
+
+.delete-btn:hover {
+  background-color: #b92d3a;
+}
+
+/* --- Blog Başlıkları (Ana Sayfa) --- */
+.post-item {
+  list-style: none;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.post-title {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2b3a67;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.post-title:hover {
+  color: #3b4cca;
+  transform: scale(1.03);
+  text-shadow: 0 2px 6px rgba(43, 58, 103, 0.3);
+}
+
+/* Başlık altındaki önizleme metni */
+.post-item p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 700px;
+}
+
+/* Küçük bilgi satırları */
+.post-item small {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+  .post-title {
+    font-size: 1.4rem;
+  }
+  .post-item p {
+    font-size: 0.95rem;
+  }
+}
+
+.post-container h2 {
+  font-size: 1.8rem;
+  color: #2b3a67;
+  margin-bottom: 20px;
+  border-left: 4px solid #3b4cca;
+  padding-left: 10px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
