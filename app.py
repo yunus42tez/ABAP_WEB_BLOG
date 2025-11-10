@@ -29,8 +29,9 @@ app.secret_key = os.getenv("SECRET_KEY")
 ADMIN_ID = os.getenv("ADMIN_ID")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
-# Veritabanı bağlantısı (SQLite kullanıyoruz)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
+# Veritabanı bağlantısı
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -43,6 +44,7 @@ class Post(db.Model):
     title = db.Column(db.String(150), nullable=False)
     content = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    views = db.Column(db.Integer, default=0)
 
     def __repr__(self):
         return f"<Post {self.title}>"
@@ -144,6 +146,8 @@ def index():
 @app.route("/post/<int:id>")
 def post(id):
     post_data = Post.query.get_or_404(id)
+    post_data.views += 1
+    db.session.commit()
     return render_template("post.html", post=post_data)
 
 @app.route("/about")
@@ -229,4 +233,4 @@ def logout():
 # MAIN
 # -------------------------------
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

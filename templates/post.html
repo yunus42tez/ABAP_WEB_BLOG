@@ -13,6 +13,9 @@
 <div class="post-container">
   <h1>{{ post.title }}</h1>
   <div>{{ post.content | safe }}</div>
+     <br>
+    <small>👁️ Görüntülenme Sayısı: {{ post.views }}</small>
+     <br>
     <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
 </div>
 </body>

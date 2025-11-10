@@ -20,18 +20,14 @@
   </div>
 </header>
 
-<div id="codingboy" style="width:350px; height:350px; position:fixed;
-    top: 70%;
-    left: 80%;
-    transform: translate(-50%, -50%);">
-</div>
+<div id="coding" class="lottie-container"></div>
 
 <div class="nav-container">
 
   <div id="sap_logo" style="
       position: fixed;
       top: 35%;
-      left: 80%;
+      left: 85%;
       transform: translate(-50%, -50%);
   ">
     <img src="/assets/sap_logo.jpg"
@@ -56,10 +52,11 @@
       {% for post in posts %}
       <li class="post-item">
         <a href="{{ url_for('post', id=post.id) }}" class="post-title">{{ post.title }}</a>
-        <p>{{ post.content[:200]|safe }}...</p>
+       <p>{{ post.content|striptags|truncate(100, True, '...') }}</p>
         <br>
         <small>Yunus TEZ</small>
         <br>
+          <small>👁️ Görüntülenme Sayısı: {{ post.views }}</small>
         <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
       </li>
       {% else %}
@@ -69,13 +66,13 @@
 </main>
 
 <script>
-    // Lottie animasyonu yükle
+     // Lottie animasyonu yükle   https://app.lottiefiles.com/
     lottie.loadAnimation({
-        container: document.getElementById('codingboy'),
+        container: document.getElementById('coding'),
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: '/assets/codingboy.json'  // JSON dosyanın yolu
+        path: '/assets/coding.json'  // JSON dosyanın yolu
     });
 </script>
 
