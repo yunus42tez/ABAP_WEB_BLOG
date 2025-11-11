@@ -161,6 +161,10 @@ def about():
 def custom_static(filename):
     return send_from_directory(os.path.join(app.root_path, 'assets'), filename)
 
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt')
+
 @app.route("/search")
 def search():
     query = request.args.get("q", "").lower()
@@ -222,6 +226,18 @@ def backup():
         mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         headers={"Content-Disposition": "attachment; filename=blog_backup.docx"}
     )
+
+@app.route("/sitemap.xml", methods=["GET"])
+def sitemap():
+    """Tüm blog yazıları için otomatik site haritası üretir."""
+    posts = Post.query.order_by(Post.date_posted.desc()).all()
+    base_url = "https://ytez-abap-blog.onrender.com"
+
+    # Son post tarihi (ya da bugünün tarihi)
+    lastmod = posts[0].date_posted if posts else datetime.utcnow()
+
+    xml = render_template("sitemap.xml", posts=posts, base_url=base_url, lastmod=lastmod)
+    return Response(xml, mimetype="application/xml")
 
 # -------------------------------
 # ÇIKIŞ (Opsiyonel)

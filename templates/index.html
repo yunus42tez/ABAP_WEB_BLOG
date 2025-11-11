@@ -2,9 +2,38 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Ana Sayfa</title>
+    <title>Yunus Tez SAP ABAP Blog</title>
+
+    <!-- 🌐 SEO Temel Meta Etiketleri -->
+    <meta name="description" content="Yunus Tez'in SAP ABAP üzerine hazırladığı blogda teknik yazılar, ipuçları, örnek projeler ve güncel ABAP gelişmelerini keşfedin.">
+    <meta name="keywords" content="Yunus Tez, SAP, ABAP, SAP ABAP, Blog, Yazılım, ERP, Kodlama, Teknoloji, SAP Eğitimi, ABAP Programlama">
+    <meta name="author" content="Yunus Tez">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Turkish">
+
+    <!-- 📱 Mobil Uyumluluk -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 🔗 Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Yunus Tez | SAP ABAP Blog">
+    <meta property="og:description" content="SAP ABAP geliştiricileri için rehber, ipuçları ve teknik yazılar.">
+    <meta property="og:image" content="{{ url_for('static', filename='preview.jpg', _external=True) }}">
+    <meta property="og:url" content="{{ request.url_root }}">
+    <meta property="og:type" content="website">
+
+    <!-- 🐦 Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yunus Tez | SAP ABAP Blog">
+    <meta name="twitter:description" content="SAP ABAP geliştiricileri için pratik yazılar ve teknik bilgiler.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='preview.jpg', _external=True) }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Lottie animasyon kütüphanesi -->
+
+    <!-- Lottie -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
 </head>
 <body>

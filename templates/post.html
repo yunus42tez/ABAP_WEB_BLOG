@@ -2,8 +2,10 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>{{ post.title }}</title>
+  <title>{{ post.title }} | Yunus Tez SAP ABAP Blog</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <meta name="description" content="{{ post.content[:150]|striptags }}">
+  <meta name="keywords" content="{{ post.title }}, ABAP, SAP, Blog, how to">
 </head>
 <body>
   <header>
