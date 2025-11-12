@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 import base64
 import requests
+from math import ceil
 # ==========================
 # 🧩 Third-Party Imports
 # ==========================
@@ -143,8 +144,10 @@ def zytez_delete_post():
 # -------------------------------
 @app.route("/")
 def index():
-    posts = Post.query.order_by(Post.date_posted.desc()).all()
-    return render_template("index.html", posts=posts)
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=per_page)
+    return render_template('index.html', posts=posts)
 
 @app.route("/post/<int:id>")
 def post(id):

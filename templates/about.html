@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Hakkımda | Yunus Tez SAP ABAP Blog</title>
+        <!-- 🌟 Site meta ve favicon -->
+<link rel="icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <!-- Lottie animasyon kütüphanesi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
@@ -10,7 +13,21 @@
 </head>
 <body>
 <header>
+    <div class="nav-container">
+    <!-- Sol taraf sosyal medya -->
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/yunus-tez-61231021a/" target="_blank" aria-label="LinkedIn">
+        <img src="{{ url_for('custom_static', filename='linkedin.png') }}" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com/yunus42tez" target="_blank" aria-label="Instagram">
+        <img src="{{ url_for('custom_static', filename='instagram.png') }}" alt="Instagram" class="social-icon">
+      </a>
+        <a href="https://github.com/yunus42tez?tab=repositories" target="_blank" aria-label="Github">
+        <img src="{{ url_for('custom_static', filename='github.png') }}" alt="Github" class="social-icon">
+      </a>
+    </div>
     <a href="/" class="about-btn">← Geri Dön</a>
+    </div>
 </header>
 
 <div id="plane"></div>

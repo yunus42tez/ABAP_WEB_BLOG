@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Yunus Tez SAP ABAP Blog</title>
+    <!-- 🌟 Site meta ve favicon -->
+<link rel="icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}">
 
     <!-- 🌐 SEO Temel Meta Etiketleri -->
     <meta name="description" content="Yunus Tez'in SAP ABAP üzerine hazırladığı blogda teknik yazılar, ipuçları, örnek projeler ve güncel ABAP gelişmelerini keşfedin.">
@@ -41,6 +44,20 @@
 
 <header>
   <div class="nav-container">
+    <!-- Sol taraf sosyal medya -->
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/yunus-tez-61231021a/" target="_blank" aria-label="LinkedIn">
+        <img src="{{ url_for('custom_static', filename='linkedin.png') }}" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com/yunus42tez" target="_blank" aria-label="Instagram">
+        <img src="{{ url_for('custom_static', filename='instagram.png') }}" alt="Instagram" class="social-icon">
+      </a>
+        <a href="https://github.com/yunus42tez?tab=repositories" target="_blank" aria-label="Github">
+        <img src="{{ url_for('custom_static', filename='github.png') }}" alt="Github" class="social-icon">
+      </a>
+    </div>
+
+    <!-- Arama ve hakkımda kısmı -->
     <form action="/search" method="get" class="search-form">
       <input type="text" name="q" placeholder="🔍 Başlık ara...">
       <button type="submit">Ara</button>
@@ -79,21 +96,35 @@
 <main class="content">
     <h1>SAP ABAP Konu Başlıkları 📑</h1>
     <ul>
-      {% for post in posts %}
-      <li class="post-item">
-        <a href="{{ url_for('post', id=post.id) }}" class="post-title">{{ post.title }}</a>
-       <p>{{ post.content|striptags|truncate(100, True, '...') }}</p>
-        <br>
-        <small>Yunus TEZ</small>
-        <br>
-          <small>👁️ Görüntülenme Sayısı: {{ post.views }}</small>
-        <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
-      </li>
-      {% else %}
-      <p>Henüz yazı bulunmuyor.</p>
-      {% endfor %}
+{% for post in posts.items %}
+  <li class="post-item">
+    <a href="{{ url_for('post', id=post.id) }}" class="post-title">{{ post.title }}</a>
+    <p>{{ post.content|striptags|truncate(100, True, '...') }}</p>
+    <br>
+    <small>Yunus TEZ</small><br>
+    <small>👁️ Görüntülenme Sayısı: {{ post.views }}</small><br>
+    <small>Yayın tarihi: {{ post.date_posted.strftime('%d.%m.%Y') }}</small>
+  </li>
+{% else %}
+  <p>Henüz yazı bulunmuyor.</p>
+{% endfor %}
     </ul>
+    <div class="pagination">
+  {% if posts.has_prev %}
+    <a href="{{ url_for('index', page=posts.prev_num) }}" class="page-link">← Önceki</a>
+  {% endif %}
+
+  <span class="page-info">Sayfa {{ posts.page }} / {{ posts.pages }}</span>
+
+  {% if posts.has_next %}
+    <a href="{{ url_for('index', page=posts.next_num) }}" class="page-link">Sonraki →</a>
+  {% endif %}
+</div>
 </main>
+
+    <footer class="footer">
+  <p>© 2025 Yunus Tez | Bilgi paylaştıkça çoğalır 🚀</p>
+</footer>
 
 <script>
      // Lottie animasyonu yükle   https://app.lottiefiles.com/
