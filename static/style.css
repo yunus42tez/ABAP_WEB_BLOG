@@ -143,26 +143,35 @@ main {
 @media (max-width: 1199px) and (min-width: 768px) {
 
   #plane {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     right: 20px;
-    bottom: 70px;
+    bottom:170px;
   }
 
   #plane1 {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     left: 20px;
-    bottom: 50px;
+    bottom: 150px;
   }
 }
 
 /* ---------- Küçük ekran (telefon) ---------- */
 @media (max-width: 767px) {
 
-  #plane,
+  #plane {
+    width: 120px;
+    height: 120px;
+    right: 10px;
+    bottom: 120px;
+  }
+
   #plane1 {
-    display: none; /* küçük ekranda gerekirse gizlenebilir */
+    width: 120px;
+    height: 120px;
+    left: 10px;
+    bottom: 40px;
   }
 }
 
@@ -394,6 +403,12 @@ header, .nav-container, main {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+/* 📱 Sadece index sayfasındaki ikonlar mobilde gizlensin */
+@media (max-width: 767px) {
+  .home-social-icons {
+    display: none;
+  }
 }
 
 .social-icon {
