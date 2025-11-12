@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ post.title }} | Yunus Tez SAP ABAP Blog</title>
-        <!-- 🌟 Site meta ve favicon -->
-<link rel="icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}" type="image/png">
-<link rel="apple-touch-icon" href="{{ url_for('custom_static', filename='dolphin1.png') }}">
+<!-- 🌟 Favicon & Site Logo -->
+<link rel="icon" href="/assets/dolphin1.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/dolphin1.png">
+<link rel="shortcut icon" href="/assets/dolphin1.png" type="image/png">
+
+<!-- 🧠 Google favicon ve site logosu için -->
+<link rel="icon" href="https://ytez-abap-blog.onrender.com/assets/dolphin1.png" type="image/png">
+<meta property="og:image" content="https://ytez-abap-blog.onrender.com/assets/preview.png">
+<meta itemprop="image" content="https://ytez-abap-blog.onrender.com/assets/preview.png">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
       <meta name="description" content="{{ post.content[:150]|striptags }}">
   <meta name="keywords" content="{{ post.title }}, ABAP, SAP, Blog, how to">
