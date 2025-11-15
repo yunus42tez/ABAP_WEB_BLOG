@@ -446,7 +446,7 @@ header, .nav-container, main {
 @media (max-width: 767px) {
   header {
     padding: 10px 40px;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 
@@ -480,9 +480,12 @@ header, .nav-container, main {
 }
 
   .nav-container {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 10px;
+    display: flex !important;
+    flex-direction: row !important;    /* satırda kal */
+    align-items: center !important;     /* dikey ortala */
+    justify-content: space-between !important;
+    gap: 8px;
+    width: 100%;
   }
 
   .about {
