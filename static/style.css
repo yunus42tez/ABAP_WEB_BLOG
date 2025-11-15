@@ -407,7 +407,7 @@ header, .nav-container, main {
 /* 📱 Sadece index sayfasındaki ikonlar mobilde gizlensin */
 @media (max-width: 767px) {
   .home-social-icons {
-    display: flex;
+    display: none;
   }
 }
 
