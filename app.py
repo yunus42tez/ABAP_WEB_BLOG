@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 import base64
 import requests
 from math import ceil
+import json
 # ==========================
 # 🧩 Third-Party Imports
 # ==========================
@@ -230,6 +231,66 @@ def backup():
         headers={"Content-Disposition": "attachment; filename=blog_backup.docx"}
     )
 
+
+@app.route("/dump")
+def dump_db():
+    posts = Post.query.all()
+
+    data = {
+        "posts": [
+            {
+                "id": p.id,
+                "title": p.title,
+                "content": p.content,
+                "views": p.views,
+                "date_posted": p.date_posted.strftime("%Y-%m-%d")
+            }
+            for p in posts
+        ]
+    }
+
+    json_data = json.dumps(data, ensure_ascii=False, indent=4)
+
+    return Response(
+        json_data,
+        mimetype="application/json",
+        headers={
+            "Content-Disposition": "attachment;filename=db_dump.json"
+        }
+    )
+
+
+@app.route("/update", methods=["POST"])
+def update_db():
+    file = request.files.get("dumpfile")
+
+    if not file:
+        return "Dosya bulunamadı", 400
+
+    try:
+        data = json.load(file)
+    except:
+        return "JSON formatı hatalı!", 400
+
+    # --- DB temizleme ---
+    Post.query.delete()
+    db.session.commit()
+
+    # --- Yeni verileri ekleme ---
+    for p in data.get("posts", []):
+        new_post = Post(
+            id=p.get("id"),
+            title=p.get("title"),
+            content=p.get("content"),
+            views=p.get("views", 0),
+            date_posted = datetime.strptime(p.get("date_posted"), "%Y-%m-%d")
+        )
+        db.session.add(new_post)
+
+    db.session.commit()
+
+    return "DB başarıyla güncellendi!"
+
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():
     """Tüm blog yazıları için otomatik site haritası üretir."""
@@ -255,4 +316,4 @@ def logout():
 # MAIN
 # -------------------------------
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)

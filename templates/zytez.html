@@ -42,6 +42,34 @@
   <div class="form-container logout-container">
     <a href="{{ url_for('logout') }}" class="logout-link">🚪 Çıkış Yap</a>
   </div>
+  <div class="db-admin-wrapper">
+
+    <!-- Backup -->
+    <div class="db-card">
+        <h3>📦 Veritabanı Yedeği Al</h3>
+        <p>Mevcut veritabanınızı indirilebilir dosya olarak alın.</p>
+        <a href="/backup" class="db-btn">Yedek İndir</a>
+    </div>
+
+    <!-- Dump -->
+    <div class="db-card">
+        <h3>🧾 Dump Al</h3>
+        <p>Veritabanı dump dosyasını oluşturur ve indirmenizi sağlar.</p>
+        <a href="/dump" class="db-btn">Dump Oluştur</a>
+    </div>
+
+    <!-- Update -->
+    <div class="db-card">
+        <h3>🛠️ Dump Yükle (DB Güncelle)</h3>
+        <p>Bilgisayarınızdan dump seçip veritabanını güncelleyin.</p>
+
+        <form action="/update" method="post" enctype="multipart/form-data">
+            <input type="file" name="dumpfile" class="file-input" required>
+            <button type="submit" class="db-btn">DB'yi Güncelle</button>
+        </form>
+    </div>
+
+</div>
 
   <!-- Quill & Resize -->
   <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
